@@ -1,8 +1,7 @@
-<p>posts-page works!</p>
-
-@for(post of posts(); track post.id) {
-<div class="flex flex-col my-6">
-  <h2>Title: {{ post.id }}</h2>
-  <p>Body: {{ post.body }}</p>
-</div>
+@if (isLoading()) {
+<app-page-loader></app-page-loader>
+} @else if (posts().length > 0) {
+<app-posts-list [posts]="posts()" />
+} @else {
+<app-empty-page text="No posts found" />
 }

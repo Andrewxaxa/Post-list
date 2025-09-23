@@ -3,10 +3,13 @@ import { PostsService } from '../services/posts-service';
 import { IPost } from '../interfaces/post.interface';
 import { finalize } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { PageLoader } from '../../UI/page-loader/page-loader';
+import { PostsList } from '../posts-list/posts-list';
+import { EmptyPage } from '../../UI/empty-page/empty-page';
 
 @Component({
   selector: 'app-posts-page',
-  imports: [],
+  imports: [PageLoader, PostsList, EmptyPage],
   templateUrl: './posts-page.html',
   styleUrl: './posts-page.css',
 })
@@ -14,7 +17,7 @@ export class PostsPage implements OnInit {
   private postsService = inject(PostsService);
   private destroyRef = inject(DestroyRef);
   readonly posts = signal<IPost[]>([]);
-  readonly isLoading = signal(false);
+  readonly isLoading = signal(true);
 
   ngOnInit(): void {
     this.postsService
