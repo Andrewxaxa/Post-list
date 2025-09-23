@@ -1,7 +1,7 @@
 @if (isLoading()) {
 <app-page-loader></app-page-loader>
 } @else if (posts().length > 0) {
-<app-posts-list [posts]="posts()" />
+<app-posts-search [posts]="posts()"></app-posts-search>
 } @else {
 <app-empty-page text="No posts found" />
 }

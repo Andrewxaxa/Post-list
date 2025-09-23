@@ -4,12 +4,12 @@ import { IPost } from '../interfaces/post.interface';
 import { finalize } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PageLoader } from '../../UI/page-loader/page-loader';
-import { PostsList } from '../posts-list/posts-list';
 import { EmptyPage } from '../../UI/empty-page/empty-page';
+import { PostsSearch } from '../posts-search/posts-search';
 
 @Component({
   selector: 'app-posts-page',
-  imports: [PageLoader, PostsList, EmptyPage],
+  imports: [PageLoader, EmptyPage, PostsSearch],
   templateUrl: './posts-page.html',
   styleUrl: './posts-page.css',
 })

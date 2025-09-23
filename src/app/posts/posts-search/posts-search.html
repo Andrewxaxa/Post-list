@@ -1,0 +1,8 @@
+<div class="p-4 md:p-8">
+  <app-search-field
+    label="Search posts"
+    (searchChange)="onSearchChanged($event)"
+  ></app-search-field>
+
+  <app-posts-list [posts]="filteredPosts()" />
+</div>

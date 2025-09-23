@@ -1,0 +1,21 @@
+<div class="relative w-full mb-8">
+  <div
+    class="relative w-full flex items-center border border-gray-300 rounded-md shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 transition-all duration-200"
+  >
+    <div class="absolute left-3 text-gray-400">
+      <app-search-icon></app-search-icon>
+    </div>
+
+    <input
+      class="w-full pl-10 pr-10 py-2.5 text-base text-gray-700 placeholder-gray-500 border-none outline-none focus:ring-0 bg-transparent"
+      [placeholder]="label()"
+      type="text"
+      [ngModel]="search()"
+      (ngModelChange)="onSearchChange($event)"
+    />
+
+    @if (search()) {
+    <app-clear-button class="absolute right-3" (buttonClick)="onClear()"></app-clear-button>
+    }
+  </div>
+</div>
