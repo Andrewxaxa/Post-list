@@ -16,6 +16,7 @@ import { EmptyPage } from '../../UI/empty-page/empty-page';
 export class PostsPage implements OnInit {
   private postsService = inject(PostsService);
   private destroyRef = inject(DestroyRef);
+
   readonly posts = signal<IPost[]>([]);
   readonly isLoading = signal(true);
 

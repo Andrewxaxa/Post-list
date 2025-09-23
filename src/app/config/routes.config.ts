@@ -1,6 +1,7 @@
 interface IRoutesConfig {
   HOME: IRouteConfig;
   POSTS: IRouteConfig;
+  POST_DETAILS: IRouteConfig;
 }
 
 interface IRouteConfig {
@@ -19,5 +20,10 @@ export const ROUTES_CONFIG: IRoutesConfig = {
     name: 'Posts',
     path: 'posts',
     title: 'Posts',
+  },
+  POST_DETAILS: {
+    name: 'Post details',
+    path: 'posts/:id',
+    title: 'Post details',
   },
 };
