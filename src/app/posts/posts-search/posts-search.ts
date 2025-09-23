@@ -1,4 +1,4 @@
-import { Component, input, linkedSignal } from '@angular/core';
+import { Component, input, linkedSignal, output } from '@angular/core';
 import { IPost } from '../interfaces/post.interface';
 import { PostsList } from '../posts-list/posts-list';
 import { SearchField } from '../../UI/search-field/search-field';
@@ -12,8 +12,9 @@ import { SearchField } from '../../UI/search-field/search-field';
 export class PostsSearch {
   readonly posts = input.required<IPost[]>();
   readonly filteredPosts = linkedSignal(() => this.posts());
+  readonly userIdSearchChange = output<number>();
 
-  onSearchChanged(value: string) {
+  onPostSearchChanged(value: string) {
     const searchTerm = value.toLowerCase();
 
     this.filteredPosts.set(
@@ -23,5 +24,9 @@ export class PostsSearch {
           post.body.toLocaleLowerCase().includes(searchTerm)
       )
     );
+  }
+
+  onUserSearchChanged(value: string) {
+    this.userIdSearchChange.emit(+value);
   }
 }

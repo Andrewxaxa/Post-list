@@ -21,8 +21,16 @@ export class PostsPage implements OnInit {
   readonly isLoading = signal(true);
 
   ngOnInit(): void {
+    this.getPosts();
+  }
+
+  onUserIdSearchChange(id: number) {
+    this.getPosts(id);
+  }
+
+  getPosts(id?: number) {
     this.postsService
-      .getPosts$()
+      .getPosts$(id)
       .pipe(
         finalize(() => {
           this.isLoading.set(false);

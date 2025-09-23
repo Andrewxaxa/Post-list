@@ -11,6 +11,7 @@ import { SearchIcon } from '../icons/search-icon/search-icon';
 })
 export class SearchField {
   readonly label = input<string>('Search');
+  readonly type = input<string>('text');
   readonly searchChange = output<string>();
 
   search = signal<string>('');

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { API_ROUTES } from '../../config/api.config';
 import { Observable } from 'rxjs';
@@ -11,8 +11,14 @@ import { IAuthorDetails } from '../interfaces/author.interface';
 export class PostsService {
   private http = inject(HttpClient);
 
-  getPosts$(): Observable<IPost[]> {
-    return this.http.get<IPost[]>(API_ROUTES.POSTS);
+  getPosts$(userId?: number): Observable<IPost[]> {
+    let params = new HttpParams();
+
+    if (userId) {
+      params = params.set('userId', userId.toString());
+    }
+
+    return this.http.get<IPost[]>(API_ROUTES.POSTS, { params });
   }
 
   getPostDetails$(id: number): Observable<IPost> {
