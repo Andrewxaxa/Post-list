@@ -1,99 +1,149 @@
-# Zadanie Rekrutacyjne – Etap 1
+# Proffeo Recruitment Task
 
-### Nie oczekujemy gotowego produktu - zrób tyle ile będziesz w stanie zrobić. Otrzymanie zadania oznacza start zadania i od niego liczone jest do 8h. (Zadanie w najprostszym wariancie powinno zająć około 3-4 godziny)
-
-### Dla jasności - żaden fragment zadania nie zostanie wykorzystany komercyjnie, jest to zadanie czysto rekrutacyjne.
-
-## Cel
-
-Twoim zadaniem jest przygotowanie mini-aplikacji w Angular 20 z wykorzystaniem nowoczesnych funkcjonalności frameworka.
-
-Aplikacja powinna korzystać z publicznego API [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com), prezentować listę postów wraz z możliwością ich filtrowania, przeglądania szczegółów oraz dodawania do ulubionych.  
-Projekt ma być responsywny i działać zarówno na desktopie, jak i na urządzeniach mobilnych.
+A modern Angular application demonstrating component-based architecture, zoneless signal-based state management, and API integration.
 
 ---
 
-## Zasady realizacji
-- Zadanie należy umieścić w publicznym repozytorium GitHub, aby był wgląd w historię commitów.  
-- **Nazwa repozytorium:** imię i nazwisko kandydata.  
-- **Czas na wykonanie:** do 8 godzin.  
-- **Commity:** częste i opisowe.  
-- Kod powinien być zgodny z dobrymi praktykami (DRY, SOLID, czystość architektury).
-- Użycie AI dopuszczalne jako wsparcie w zakresie planowania, testów i dokumentacji. 
+## 📁 Folder Structure
+
+```
+.
+├── .editorconfig
+├── .gitignore
+├── .postcssrc.json
+├── angular.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.spec.json
+├── public/
+│   └── favicon.ico
+├── src/
+│   ├── custom-theme.scss
+│   ├── index.html
+│   ├── main.ts
+│   ├── styles.css
+│   └── app/
+│       ├── app.config.ts
+│       ├── app.css
+│       ├── app.html
+│       ├── app.routes.ts
+│       ├── app.spec.ts
+│       ├── app.ts
+│       ├── config/
+│       │   ├── api.config.ts
+│       │   └── routes.config.ts
+│       ├── home/
+│       ├── main/
+│       ├── navbar/
+│       │   ├── nav-desktop/
+│       │   ├── nav-mobile/
+│       │   └── navbar.config.ts
+│       ├── posts/
+│       │   ├── interfaces/
+│       │   ├── list-item/
+│       │   ├── post-details/
+│       │   ├── post-details-page/
+│       │   ├── posts-list/
+│       │   ├── posts-page/
+│       │   ├── posts-search/
+│       │   └── services/
+│       └── UI/
+│           ├── clear-button/
+│           ├── empty-page/
+│           ├── icons/
+│           ├── mobile-menu-button/
+│           ├── page-loader/
+│           ├── search-field/
+│           └── spinner/
+└── ...
+```
 
 ---
 
-## Wymagania techniczne
+## 🧩 Component List
 
-- **Framework:** Angular 20  
-- **Komponenty:** standalone components  
-- **Stan:** signals  
-- **Change detection:** zoneless (`provideZonelessChangeDetection()`)  
-- **Style:** TailwindCSS v4 (theme, zmienne, flexbox)  
-- **Architektura:** lazy loading modułów/feature’ów  
-- **Stan aplikacji:** signals + prosty singleton service trzymający dane w pamięci (cache)  
-- **Animacje:** co najmniej jedna w nowej składni `animate.enter` / `animate.leave`  
-- **Asynchroniczność:** RxJS + HttpClient  
-- **Loader:** prosty spinner lub skeleton  
-- **Responsywność:** poprawne wyświetlanie na desktopie i mobile  
-- **Struktura katalogów:** przejrzysta i uporządkowana (np. `features/`, `shared/`, `core/`, `services/`)  
+### **App Shell**
 
----
+- [`App`](src/app/app.ts): Root component, includes navbar and main content.
+- [`Main`](src/app/main/main.ts): Hosts the router outlet for page content.
 
-## Plan przed implementacją
-Przed rozpoczęciem pracy należy przygotować w pliku `.md` (oczekujemy użycia AI do planowania i dokumentacji):
-- strukturę katalogów,  
-- listę komponentów,  
-- serwisy,  
-- podejście do zarządzania stanem.
+### **Navigation**
 
----
+- [`Navbar`](src/app/navbar/navbar.ts): Main navigation bar.
+  - [`NavDesktop`](src/app/navbar/nav-desktop/nav-desktop.ts): Desktop navigation links.
+  - [`NavMobile`](src/app/navbar/nav-mobile/nav-mobile.ts): Mobile navigation menu.
+  - [`NavItem`](src/app/navbar/nav-desktop/nav-item/nav-item.ts): Single desktop nav item.
+  - [`NavMobileItem`](src/app/navbar/nav-mobile/nav-mobile-item/nav-mobile-item.ts): Single mobile nav item.
+  - [`MobileMenuButton`](src/app/UI/mobile-menu-button/mobile-menu-button.ts): Hamburger menu button for mobile.
 
-## Funkcjonalności
+### **Posts**
 
-### 1. Lista postów
-- Pobranie listy z API:  
-  `https://jsonplaceholder.typicode.com/posts`  
-- Wyświetlenie listy tytułów i fragmentów treści.  
+- [`PostsPage`](src/app/posts/posts-page/posts-page.ts): Main posts page, handles loading and state.
+- [`PostsSearch`](src/app/posts/posts-search/posts-search.ts): Search/filter posts by title/body or user ID.
+- [`PostsList`](src/app/posts/posts-list/posts-list.ts): Displays a grid of posts.
+- [`ListItem`](src/app/posts/list-item/list-item.ts): Single post preview card.
+- [`PostDetailsPage`](src/app/posts/post-details-page/post-details-page.ts): Post details, author, and comments.
+- [`PostDetails`](src/app/posts/post-details/post-details.ts): Combines author and comments sections.
+- [`AuthorDetailsPage`](src/app/posts/post-details/author-details-page/author-details-page.ts): Handles author loading state.
+- [`AuthorDetails`](src/app/posts/post-details/author-details/author-details.ts): Displays author info.
+- [`PostCommentsPage`](src/app/posts/post-details/post-comments-page/post-comments-page.ts): Handles comments loading state.
+- [`PostComments`](src/app/posts/post-details/post-comments/post-comments.ts): Lists all comments for a post.
+- [`PostCommentsItem`](src/app/posts/post-details/post-comments-item/post-comments-item.ts): Single comment display.
 
-### 2. Szczegóły posta
-Po kliknięciu w post załaduj i wyświetl:  
-- pełną treść posta,  
-- dane autora (`/users/:id`),  
-- komentarze (`/posts/:id/comments`).  
+### **UI/Utility**
 
-### 3. Filtrowanie
-- **Po treści posta** – filtracja po stronie frontendu.  
-- **Po użytkowniku** – filtrowanie przez query param:  
-  `https://jsonplaceholder.typicode.com/posts?userId=1`  
-- **Tylko ulubione** – filtrowanie postów oznaczonych jako ulubione (stan w singletonie).  
-
-### 4. Ulubione
-- Możliwość oznaczania posta jako ulubiony (toggle).  
-- Lista ulubionych przechowywana w singletonie (stan w serwisie).  
-
-### 5. Singleton (cache)
-Dane postów muszą być przechowywane w singleton service (signal store).  
-Dzięki temu posty nie są pobierane ponownie przy każdym wejściu.  
-
-Ponowne zapytania do API wykonujemy tylko w przypadku:  
-- zmiany filtrów,  
-- odświeżenia strony.  
+- [`SearchField`](src/app/UI/search-field/search-field.ts): Search input with clear button and icon.
+- [`ClearButton`](src/app/UI/clear-button/clear-button.ts): Button to clear search input.
+- [`Spinner`](src/app/UI/spinner/spinner.ts): Loading spinner.
+- [`PageLoader`](src/app/UI/page-loader/page-loader.ts): Centered spinner for page loading.
+- [`EmptyPage`](src/app/UI/empty-page/empty-page.ts): Placeholder for empty states.
+- [`SearchIcon`](src/app/UI/icons/search-icon/search-icon.ts): SVG search icon.
 
 ---
 
-## Bonus (dodatkowe punkty)
-- Dodaj zakładkę z widokiem Gantta, w którym pokażesz posty z zamockowanymi datami start–end (API ich nie zwraca).  
-- Dane mogą być zapisane w modelach TypeScript.  
-- Wyświetlenie w formie prostego timeline (tablica Gantt).  
+## 🛠️ Services
+
+- [`PostsService`](src/app/posts/services/posts-service.ts):  
+  Handles all API requests for posts, post details, comments, and author details.
+  - `getPosts$(userId?: number)`
+  - `getPostDetails$(id: number)`
+  - `getPostComments$(id: number)`
+  - `getAuthorDetails$(id: number)`
+
+API endpoints are configured in [`API_ROUTES`](src/app/config/api.config.ts).
 
 ---
 
-## Podsumowanie
-Aplikacja powinna:  
-- pobierać i wyświetlać posty,  
-- umożliwiać filtrowanie,  
-- prezentować szczegóły posta,  
-- obsługiwać ulubione,  
-- być responsywna i nowoczesna,  
-- korzystać z najnowszych funkcjonalności Angulara 20.  
+## 🗂️ State Management
+
+This project uses Angular's [signals](https://angular.dev/reference/signals) for local component state and input/output bindings for communication between components.
+
+- **Signals** are used for reactive state in components (e.g., `isLoading`, `posts`, `author`, `postComments`).
+- **Inputs/Outputs** are used for passing data and events between parent and child components.
+- No external state management library (like NgRx) is used; state is managed locally and via services.
+
+---
+
+## 🚀 Getting Started
+
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Run the app:**
+   ```sh
+   npm start
+   ```
+   The app will be available at [http://localhost:4200](http://localhost:4200).
+
+---
+
+## 📚 Additional Notes
+
+- Theming is handled via [Tailwind CSS](https://tailwindcss.com/).
+- Routing is configured in [`app.routes.ts`](src/app/app.routes.ts) using Angular Router.
+- The project is set up with strict TypeScript and Angular compiler options for reliability.
+
+---
