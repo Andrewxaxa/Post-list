@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { ROUTES_CONFIG } from './routes.config';
+import { ROUTES_CONFIG } from './config/routes.config';
 import { Home } from './home/home';
-import { Posts } from './posts/posts';
+import { PostsPage } from './posts/posts-page/posts-page';
 
 export const routes: Routes = [
   {
@@ -11,7 +11,7 @@ export const routes: Routes = [
   },
   {
     path: ROUTES_CONFIG.POSTS.path,
-    component: Posts,
+    component: PostsPage,
     title: ROUTES_CONFIG.POSTS.name,
   },
 ];

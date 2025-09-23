@@ -1,0 +1,8 @@
+<p>posts-page works!</p>
+
+@for(post of posts(); track post.id) {
+<div class="flex flex-col my-6">
+  <h2>Title: {{ post.id }}</h2>
+  <p>Body: {{ post.body }}</p>
+</div>
+}

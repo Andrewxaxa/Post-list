@@ -1,4 +1,4 @@
-import { ROUTES_CONFIG } from '../routes.config';
+import { ROUTES_CONFIG } from '../config/routes.config';
 
 export interface INavRoute {
   name: string;
