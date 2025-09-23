@@ -1,1 +1,13 @@
-<p>post-details-page works!</p>
+@if (postLoading()) {
+<app-page-loader></app-page-loader>
+} @else if (post()) {
+<app-post-details
+  [post]="post()!"
+  [author]="author()"
+  [postComments]="postComments()"
+  [authorLoading]="authorLoading()"
+  [commentsLoading]="commentsLoading()"
+></app-post-details>
+} @else {
+<app-empty-page text="No posts found" />
+}

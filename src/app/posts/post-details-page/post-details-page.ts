@@ -4,10 +4,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { concatMap, finalize } from 'rxjs';
 import { IPost, IPostComment } from '../interfaces/post.interface';
 import { IAuthorDetails } from '../interfaces/author.interface';
+import { PageLoader } from '../../UI/page-loader/page-loader';
+import { PostDetails } from '../post-details/post-details';
+import { EmptyPage } from '../../UI/empty-page/empty-page';
 
 @Component({
   selector: 'app-post-details-page',
-  imports: [],
+  imports: [PageLoader, PostDetails, EmptyPage],
   templateUrl: './post-details-page.html',
   styleUrl: './post-details-page.css',
 })
@@ -52,7 +55,6 @@ export class PostDetailsPage implements OnInit {
           this.authorLoading.set(false);
         })
       )
-      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((author) => {
         this.author.set(author);
       });

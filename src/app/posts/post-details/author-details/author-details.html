@@ -1,0 +1,21 @@
+<h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-3">Author details:</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-600 dark:text-gray-400">
+  <p>
+    <span class="font-semibold text-gray-900 dark:text-gray-100">Full name:</span>
+    {{ author()?.name || '-' }}
+  </p>
+  <p>
+    <span class="font-semibold text-gray-900 dark:text-gray-100">Email:</span>
+    {{ author()?.email || '-' }}
+  </p>
+  <p>
+    <span class="font-semibold text-gray-900 dark:text-gray-100">Phone:</span>
+    {{ author()?.phone || '-' }}
+  </p>
+  <p>
+    <span class="font-semibold text-gray-900 dark:text-gray-100">Website:</span>
+    <a [href]="author()?.website || '#'" target="_blank" class="text-blue-500 hover:underline">
+      {{ author()?.website || '-' }}
+    </a>
+  </p>
+</div>

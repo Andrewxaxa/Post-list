@@ -1,0 +1,7 @@
+<div class="border-t pt-6 border-gray-200 dark:border-gray-700">
+  @if (commentsLoading()) {
+  <app-spinner [size]="100"></app-spinner>
+  } @else {
+  <app-post-comments [postComments]="postComments()"></app-post-comments>
+  }
+</div>
