@@ -1,0 +1,11 @@
+<li>
+  <a
+    routerLink="/"
+    class="block mb-6 text-white text-xl font-semibold hover:text-indigo-400"
+    routerLinkActive="active"
+    [routerLink]="navItem().path"
+    [routerLinkActiveOptions]="{exact: true}"
+    (click)="closeMenu()"
+    >{{ navItem().name }}</a
+  >
+</li>

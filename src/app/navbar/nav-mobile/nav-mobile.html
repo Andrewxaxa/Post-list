@@ -1,0 +1,18 @@
+@if (isOpen()) {
+<nav
+  class="md:hidden pt-12 fixed inset-0 z-50 bg-gray-900 bg-opacity-90 flex flex-col items-center"
+>
+  <button
+    class="absolute top-4 right-4 p-2 text-white text-3xl focus:outline-none hover:cursor-pointer hover:text-indigo-400"
+    (click)="closeMenu()"
+    aria-label="Zamknij menu"
+  >
+    &times;
+  </button>
+  <ul class="text-center mt-8">
+    @for (navItem of navItems; track $index) {
+    <app-nav-mobile-item [navItem]="navItem" (closeClicked)="closeMenu()" />
+    }
+  </ul>
+</nav>
+}

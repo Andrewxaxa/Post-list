@@ -1,0 +1,7 @@
+<div class="hidden md:block">
+  <div class="ml-10 flex items-baseline space-x-4">
+    @for (navItem of navItems; track $index) {
+    <app-nav-item [navItem]="navItem" />
+    }
+  </div>
+</div>

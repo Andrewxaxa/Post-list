@@ -1,0 +1,5 @@
+.active {
+  color: var(--color-indigo-600);
+  border-bottom: 2px solid var(--color-indigo-400);
+  font-weight: bold;
+}
