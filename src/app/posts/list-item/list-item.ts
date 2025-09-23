@@ -15,7 +15,6 @@ export class ListItem {
   readonly post = input.required<IPost>();
 
   onPostClick(post: IPost): void {
-    console.log('Post clicked: ', post);
     this.router.navigate([this.post().id], { relativeTo: this.route });
   }
 }
