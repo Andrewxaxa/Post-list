@@ -1,4 +1,4 @@
-# Proffeo Recruitment Task
+# Posts list Angular
 
 A modern Angular application demonstrating component-based architecture, zoneless signal-based state management, and API integration.
 

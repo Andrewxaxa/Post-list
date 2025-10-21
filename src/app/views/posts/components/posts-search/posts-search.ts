@@ -1,7 +1,7 @@
 import { Component, input, linkedSignal, output } from '@angular/core';
-import { IPost } from '../interfaces/post.interface';
 import { PostsList } from '../posts-list/posts-list';
-import { SearchField } from '../../UI/search-field/search-field';
+import { SearchField } from '@UI/search-field/search-field';
+import { IPost } from '../../interfaces/post.interface';
 
 @Component({
   selector: 'app-posts-search',

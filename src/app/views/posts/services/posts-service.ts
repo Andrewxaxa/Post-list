@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { API_ROUTES } from '../../config/api.config';
 import { Observable } from 'rxjs';
 import { IPost, IPostComment } from '../interfaces/post.interface';
 import { IAuthorDetails } from '../interfaces/author.interface';
+import { API_ROUTES } from '../../../config/api.config';
 
 @Injectable({
   providedIn: 'root',

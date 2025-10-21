@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { MobileMenuButton } from '../UI/mobile-menu-button/mobile-menu-button';
+import { MobileMenuButton } from '@UI/mobile-menu-button/mobile-menu-button';
 import { NavDesktop } from './nav-desktop/nav-desktop';
 import { NavMobile } from './nav-mobile/nav-mobile';
 

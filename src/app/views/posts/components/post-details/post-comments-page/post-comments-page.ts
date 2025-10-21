@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
-import { IPostComment } from '../../interfaces/post.interface';
+import { IPostComment } from '../../../interfaces/post.interface';
 import { PostComments } from '../post-comments/post-comments';
-import { Spinner } from '../../../UI/spinner/spinner';
+import { Spinner } from '@UI/spinner/spinner';
 
 @Component({
   selector: 'app-post-comments-page',

@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { IAuthorDetails } from '../../interfaces/author.interface';
+import { IAuthorDetails } from '../../../interfaces/author.interface';
 
 @Component({
   selector: 'app-author-details',

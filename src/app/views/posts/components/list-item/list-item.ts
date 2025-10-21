@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { IPost } from '../interfaces/post.interface';
+import { IPost } from '../../interfaces/post.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

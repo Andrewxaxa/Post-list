@@ -1,11 +1,11 @@
 import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
-import { PostsService } from '../services/posts-service';
-import { IPost } from '../interfaces/post.interface';
 import { finalize } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PageLoader } from '../../UI/page-loader/page-loader';
-import { EmptyPage } from '../../UI/empty-page/empty-page';
 import { PostsSearch } from '../posts-search/posts-search';
+import { PostsService } from '../../services/posts-service';
+import { IPost } from '../../interfaces/post.interface';
+import { PageLoader } from '@UI/page-loader/page-loader';
+import { EmptyPage } from '@UI/empty-page/empty-page';
 
 @Component({
   selector: 'app-posts-page',

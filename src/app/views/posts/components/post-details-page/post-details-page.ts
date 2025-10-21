@@ -1,12 +1,12 @@
 import { Component, DestroyRef, inject, input, OnInit, signal } from '@angular/core';
-import { PostsService } from '../services/posts-service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { concatMap, finalize } from 'rxjs';
-import { IPost, IPostComment } from '../interfaces/post.interface';
-import { IAuthorDetails } from '../interfaces/author.interface';
-import { PageLoader } from '../../UI/page-loader/page-loader';
 import { PostDetails } from '../post-details/post-details';
-import { EmptyPage } from '../../UI/empty-page/empty-page';
+import { PostsService } from '../../services/posts-service';
+import { IPost, IPostComment } from '../../interfaces/post.interface';
+import { IAuthorDetails } from '../../interfaces/author.interface';
+import { PageLoader } from '@UI/page-loader/page-loader';
+import { EmptyPage } from '@UI/empty-page/empty-page';
 
 @Component({
   selector: 'app-post-details-page',

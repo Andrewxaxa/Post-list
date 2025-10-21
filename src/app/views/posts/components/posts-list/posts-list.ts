@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { IPost } from '../interfaces/post.interface';
 import { ListItem } from '../list-item/list-item';
+import { IPost } from '../../interfaces/post.interface';
 
 @Component({
   selector: 'app-posts-list',

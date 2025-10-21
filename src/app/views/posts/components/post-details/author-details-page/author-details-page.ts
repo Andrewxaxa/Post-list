@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
-import { IAuthorDetails } from '../../interfaces/author.interface';
+import { IAuthorDetails } from '../../../interfaces/author.interface';
 import { AuthorDetails } from '../author-details/author-details';
-import { Spinner } from '../../../UI/spinner/spinner';
+import { Spinner } from '@UI/spinner/spinner';
 
 @Component({
   selector: 'app-author-details-page',

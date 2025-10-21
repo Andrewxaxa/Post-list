@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { IPostComment } from '../../interfaces/post.interface';
+import { IPostComment } from '../../../interfaces/post.interface';
 import { PostCommentsItem } from '../post-comments-item/post-comments-item';
 
 @Component({

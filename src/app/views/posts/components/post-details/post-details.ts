@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { IPost, IPostComment } from '../interfaces/post.interface';
-import { IAuthorDetails } from '../interfaces/author.interface';
+import { IPost, IPostComment } from '../../interfaces/post.interface';
+import { IAuthorDetails } from '../../interfaces/author.interface';
 import { AuthorDetailsPage } from './author-details-page/author-details-page';
 import { PostCommentsPage } from './post-comments-page/post-comments-page';
 
