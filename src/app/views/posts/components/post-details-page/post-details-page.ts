@@ -36,26 +36,21 @@ export class PostDetailsPage implements OnInit {
       return;
     }
 
+    this.postLoading.set(true);
+    this.authorLoading.set(true);
+
     this.postsService
       .getPostDetails$(+this.id())
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .pipe(
-        finalize(() => {
-          this.postLoading.set(false);
-        })
-      )
       .pipe(
         concatMap((post) => {
+          this.postLoading.set(false);
           this.post.set(post);
           return this.postsService.getAuthorDetails$(post.userId);
-        })
-      )
-      .pipe(
-        finalize(() => {
-          this.authorLoading.set(false);
-        })
+        }),
+        takeUntilDestroyed(this.destroyRef)
       )
       .subscribe((author) => {
+        this.authorLoading.set(false);
         this.author.set(author);
       });
   }
@@ -64,14 +59,17 @@ export class PostDetailsPage implements OnInit {
     if (!this.id()) {
       return;
     }
+
+    this.commentsLoading.set(true);
+
     this.postsService
       .getPostComments$(+this.id())
       .pipe(
         finalize(() => {
           this.commentsLoading.set(false);
-        })
+        }),
+        takeUntilDestroyed(this.destroyRef)
       )
-      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((postComment) => {
         this.postComments.set(postComment);
       });

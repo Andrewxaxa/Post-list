@@ -1,10 +1,8 @@
+<app-posts-search [posts]="filteredPosts()"></app-posts-search>
 @if (isLoading()) {
 <app-page-loader></app-page-loader>
 } @else if (posts().length > 0) {
-<app-posts-search
-  [posts]="posts()"
-  (userIdSearchChange)="onUserIdSearchChange($event)"
-></app-posts-search>
+<app-posts-list [posts]="filteredPosts()" />
 } @else {
 <app-empty-page text="No posts found" />
 }

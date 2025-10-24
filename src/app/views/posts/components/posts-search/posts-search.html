@@ -9,9 +9,7 @@
       class="md:w-2/5 lg:w-1/4"
       label="Search by user id"
       type="number"
-      (searchChange)="onUserSearchChanged($event)"
+      (searchChange)="onUserIdSearchChanged($event)"
     ></app-search-field>
   </div>
-
-  <app-posts-list [posts]="filteredPosts()" />
 </div>

@@ -1,32 +1,43 @@
-import { Component, input, linkedSignal, output } from '@angular/core';
-import { PostsList } from '../posts-list/posts-list';
+import { Component, inject, input, signal } from '@angular/core';
 import { SearchField } from '@UI/search-field/search-field';
 import { IPost } from '../../interfaces/post.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts-search',
-  imports: [PostsList, SearchField],
+  imports: [SearchField],
   templateUrl: './posts-search.html',
   styleUrl: './posts-search.css',
 })
 export class PostsSearch {
+  private router = inject(Router);
+
   readonly posts = input.required<IPost[]>();
-  readonly filteredPosts = linkedSignal(() => this.posts());
-  readonly userIdSearchChange = output<number>();
+  readonly searchQuery = signal('');
+  readonly userId = signal('');
 
   onPostSearchChanged(value: string) {
-    const searchTerm = value.toLowerCase();
+    this.searchQuery.set(value.toLowerCase());
 
-    this.filteredPosts.set(
-      this.posts().filter(
-        (post) =>
-          post.title.toLowerCase().includes(searchTerm) ||
-          post.body.toLocaleLowerCase().includes(searchTerm)
-      )
-    );
+    this.setUrlParams();
   }
 
-  onUserSearchChanged(value: string) {
-    this.userIdSearchChange.emit(+value);
+  onUserIdSearchChanged(value: string) {
+    if (+value <= 0) {
+      this.userId.set('');
+    } else {
+      this.userId.set(value);
+    }
+
+    this.setUrlParams();
+  }
+
+  setUrlParams() {
+    this.router.navigate(['/posts'], {
+      queryParams: {
+        query: this.searchQuery(),
+        id: this.userId() || '',
+      },
+    });
   }
 }
